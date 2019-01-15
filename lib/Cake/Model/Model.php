@@ -1824,7 +1824,7 @@ class Model extends CakeObject implements CakeEventListener {
 			}
 		}
 
-		$exists = $this->exists();
+		$exists = $this->exists($this->getID());
 		$dateFields = array('modified', 'updated');
 
 		if (!$exists) {
@@ -2696,7 +2696,7 @@ class Model extends CakeObject implements CakeEventListener {
 			return false;
 		}
 
-		if (!$this->exists()) {
+		if (!$this->exists($this->getID())) {
 			return false;
 		}
 
@@ -2997,7 +2997,7 @@ class Model extends CakeObject implements CakeEventListener {
  *
  * @param string $type Type of find operation (all / first / count / neighbors / list / threaded)
  * @param array $query Option fields (conditions / fields / joins / limit / offset / order / page / group / callbacks)
- * @return array|null Array of records, or Null on failure.
+ * @return array|int|null Array of records, int if the type is count, or Null on failure.
  * @link https://book.cakephp.org/2.0/en/models/retrieving-your-data.html
  */
 	public function find($type = 'first', $query = array()) {
