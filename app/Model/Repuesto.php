@@ -3,7 +3,6 @@ class Repuesto extends AppModel
 {
     public $validate =array(
         'id'=>array(
-            'not blank'=>array('rule'=>'notBlank'),
             'isUnique'=>array('rule'=>'isUnique','message'=>'Ya existe este serial'),
 
         ),

@@ -2,6 +2,7 @@
 <?php
  echo $this->Form->create('Repuesto');
  echo $this->Form->input('id');
+ echo $this->Form->input('codigo');
  echo $this->Form->input('descripcion');
  echo $this->Form->input('precio');
  echo $this->Form->end('Crear Repuesto');

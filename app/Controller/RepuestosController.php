@@ -13,7 +13,8 @@ class RepuestosController extends AppController {
             throw new NotFoundException('Datos invalidos');
         }
         $repuesto=$this->Repuesto->findById($id);
-        if(!$Respuesto)
+       
+        if(!$repuesto)
         {
             throw new NotFoundException('El repuesto no existe');
         }
@@ -36,10 +37,21 @@ class RepuestosController extends AppController {
     {
         if(!$id)
         {
-            throw New NotFoundException('No existe el repuesto');
+            throw New NotFoundException('Datos Invalidos');
+        }
+        $repuesto=$this->Repuesto->findById($id);
+        if(!$repuesto)
+        {
+            throw new NotFoundException('No existe el repuesto');
         }
         if($this->request->is('post','put'))
         {
+            $this->Repuesto->id=$id;
+            if($this->Mesero->save($this->request->data))
+            {
+                $this->Session->setFlash('Los Datos Se Han Cambiado');
+                return $this->redirect((array('action'=>'index')));
+            }
             $this->Session->setFlash('El registro no pudo ser editado');
         }
         if(!$this->request->data)
