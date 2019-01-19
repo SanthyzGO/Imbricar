@@ -47,7 +47,7 @@ class RepuestosController extends AppController {
         if($this->request->is('post','put'))
         {
             $this->Repuesto->id=$id;
-            if($this->Mesero->save($this->request->data))
+            if($this->Repuesto->save($this->request->data))
             {
                 $this->Session->setFlash('Los Datos Se Han Cambiado');
                 return $this->redirect((array('action'=>'index')));
