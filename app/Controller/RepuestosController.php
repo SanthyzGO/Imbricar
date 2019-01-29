@@ -13,7 +13,7 @@ class RepuestosController extends AppController {
             throw new NotFoundException('Datos invalidos');
         }
         $repuesto=$this->Repuesto->findById($id);
-       
+
         if(!$repuesto)
         {
             throw new NotFoundException('El repuesto no existe');
@@ -22,7 +22,7 @@ class RepuestosController extends AppController {
     }
     public function nuevo()
     {
-        if ($this->request->is('post')) 
+        if ($this->request->is('post'))
         {
             $this->Repuesto->create();
             if($this->Repuesto->save($this->request->data))
@@ -58,6 +58,18 @@ class RepuestosController extends AppController {
         {
             $this->request->data=$repuesto;
         }
+    }
+    public function eliminar($id)
+    {
+      if ($this->request->is('get'))
+      {
+        throw new NotFoundException('No se puede eliminar');
+      }
+      if ($this->Repuesto->delete($id))
+      {
+        $this->Session->setFlash('el registro ha sido eliminado',$element='default',$params=array('class'=>'success'));
+      return $this->redirect(array('action'=>'index'));
+      }
     }
 }
 ?>
