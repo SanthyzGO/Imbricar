@@ -2,21 +2,41 @@
 App::uses('AppController', 'Controller');
 
 class FacturasController extends AppController {
+
   public $components = array('RequestHandler');
-  public function index(){
-    $this->set('facturas',$this->Factura->find('all'));
+
+  public function imp(){
+
+    // incluimos la libreria en el controller
+    require_once '../Vendor/dompdf/autoload.inc.php';
+
+    // instantiate and use the dompdf class
+    $dompdf = new Dompdf\Dompdf();
+    $dompdf->loadHtml('hello world');
+
+    // (Optional) Setup the paper size and orientation
+    $dompdf->setPaper('Letter', 'portrait');
+
+    // Render the HTML as PDF
+    $dompdf->render();
+
+    // Output the generated PDF to Browser
+    $dompdf->stream();
+
+    $this->set('facturas',$this->Factura->findById($id));
   }
-  public function view($id = null)
-	{
-		if (!$id) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		$options = array('conditions' => array('Factura.' . $this->Factura->primaryKey => $id));
-		$this->pdfConfig = array(
-			'download' => true,
-			'filename' => 'factura_' . $id .'.pdf'
-		);
-		$this->set('factura', $this->Factura->find('first', $options));
-	}
+  public function index()
+  {
+      if ($this->request->is('post'))
+      {
+          $this->Factura->create();
+          if($this->Factura->save($this->request->data))
+          {
+              $this->Factura->setFlash('Los datos han sido guardados','default',array('class'=>'success'));
+              return $this->redirect(array('action'=>'index'));
+          }
+          $this->Session->setFlash('Los datos no pudieron ser guardados');
+      }
+  }
 }
 ?>
