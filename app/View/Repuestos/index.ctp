@@ -1,5 +1,6 @@
-<h2>Lista de Repuestos</h2>
 
+<div class="btn-box span10">
+  <h2>Lista de Repuestos</h2>
 <table class="table table-bordered table-striped">
   <tr>
     <td>Id</td>
@@ -22,3 +23,4 @@
     </tr>
   <?php endforeach;?>
 </table>
+</div>
