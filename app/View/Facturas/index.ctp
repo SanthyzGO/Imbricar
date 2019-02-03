@@ -1,15 +1,22 @@
-<p>imprimiendo factura</p>
-<pre>
-<?php var_dump($facturas); ?>
-exit();
-</pre>
-<?php foreach($facturas as $factura):?>
-<tr>
-<td><?php echo $factura['Factura']['id'];?></td>
- <td><?php echo $factura['Factura']['id_cliente'];?></td>
- <td><?php echo $factura['Factura']['id_repuestos'];?></td>
- <td><?php echo $factura['Factura']['total'];?></td>
- <td> <?php echo $this->Html->link('Detalle',array('controller' => 'facturas','action'=>'ver',$factura['Factura']['id'])); ?></td>
- <td><?php  echo $this->Html->link(__('Export to PDF'), array('action' => 'view',$factura['Factura']['id'], 'ext' => 'pdf'));?></td>
-</tr>
-<?php endforeach;
+<h2>Crear Factura</h2>
+	<div class="btn-box span10">
+<?php
+ echo $this->Form->create('Factura');
+ echo $this->Form->input('id',array('class'=>'span8'));
+ echo $this->Form->input('cliente_id',array('class'=>'span8'));
+ echo $this->Form->input('repuestos',array('class'=>'span4'));
+ echo $this->Form->input('cantidad',array('class'=>'span4'));
+ ?>
+ <form class="navbar-search pull-left input-append" action="#">
+                        <input type="text" class="span3">
+                        <button class="btn" type="button">
+                            <i class="icon-search"></i>
+                        </button>
+                        </form><?php
+ echo $this->Form->input('total');
+  $this->Form->input('utilidad');
+ echo $this->Form->end('Crear Factura');
+
+?>
+
+</div>
