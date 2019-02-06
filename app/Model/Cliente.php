@@ -2,12 +2,12 @@
 class Cliente extends AppModel
 {
   public $hasMany=array(
-         'Factura'=>array(
-             'className'=>'Factura',
+         'Cliente'=>array(
+             'className'=>'Cliente',
              'foreignKey'=>'cliente_id',
              'conditions'=>'',
-             // 'order'=>'Cliente.nit DESC',
+             'order'=>'Cliente.id DESC',
              'depend'=> false
      )
-  );
+ );
 }

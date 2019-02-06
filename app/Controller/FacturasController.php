@@ -37,6 +37,8 @@ class FacturasController extends AppController {
           }
           $this->Session->setFlash('Los datos no pudieron ser guardados');
       }
+      $clientes=$this->Factura->Cliente->find('list',array('fields'=>array('id','nombre')));
+      $this->set('clientes',$clientes);
   }
 }
 ?>
