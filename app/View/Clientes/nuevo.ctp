@@ -1,12 +1,27 @@
 <div class="btn-box span10">
   <h2>Crear Cliente</h2>
-  <?php
-  echo $this->Form->create('Cliente');
-  echo $this->Form->input('id',array('class'=>'span8'));
-  echo $this->Form->input('nit',array('class'=>'span8'));
-  echo $this->Form->input('nombre',array('class'=>'span8'));
-  echo $this->Form->input('telefono',array('class'=>'span8'));
-  echo $this->Form->input('direccion',array('class'=>'span8'));
-  echo $this->Form->end('Crear Cliente');
-  ?>
+  <center>
+    <table>
+      <?php
+      echo $this->Form->create('Cliente');  ?>
+      <tr>
+        <td><?php echo $this->Form->input('id') ; ?></td>
+      </tr>
+      <tr>
+        <td><?php echo $this->Form->input('nit'); ?></td>
+      </tr>
+      <tr>
+        <td><?php   echo $this->Form->input('nombre'); ?></td>
+      </tr>
+      <tr>
+        <td><?php echo $this->Form->input('telefono'); ?></td>
+      </tr>
+      <tr>
+        <td><?php   echo $this->Form->input('direccion'); ?></td>
+      </tr>
+      <tr>
+        <td><?php echo $this->Form->end('Crear Cliente'); ?></td>
+      </tr>
+    </table>
+  </center>
 </div>

@@ -116,7 +116,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 						</li>
 	            <li>
 								<?php
-								 echo $this->Html->link('Crear Cliente',array('controller'=>'clientes','action'=>'nuevo'));?> 
+								 echo $this->Html->link('Crear Cliente',array('controller'=>'clientes','action'=>'nuevo'));?>
 							<!-- <a href="task.html"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">19</b> </a> -->
 							</li>
 	            </ul>
@@ -158,6 +158,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</div>
 
 <!--esta linea permite ver las busquedas que se realicen-->
-<?php //echo $this->element('sql_dump'); ?>
+<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

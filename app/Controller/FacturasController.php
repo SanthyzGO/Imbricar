@@ -40,5 +40,10 @@ class FacturasController extends AppController {
       $clientes=$this->Factura->Cliente->find('list',array('fields'=>array('id','nombre')));
       $this->set('clientes',$clientes);
   }
+  public function Datos()
+  {
+    echo "hola prro";
+      exit;
+  }
 }
 ?>
